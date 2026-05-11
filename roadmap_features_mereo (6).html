@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadmap de Features - Mereo</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --mereo-symbol-white-url: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzODYgMjQ0Jz48cGF0aCBmaWxsPScjRkZGRkZGJyBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGQ9J00xIDE3MkwxIDE4MEwwIDE4MUwxIDE5M0w1IDIwNkwxNCAyMjFMMjcgMjMzTDM0IDIzN0w0NSAyNDFMNTcgMjQyTDU4IDI0M0w3NiAyNDFMOTMgMjM0TDEwMCAyMjlMMTA5IDIyMEwxOTAgOTNMMTkzIDkwTDIxNyAxMjdMMjMzIDEyMUwyNDkgMTIwTDIxMSA2MUwyMjMgNDJMMjI4IDM3TDIzNCAzM0wyNDAgMzFMMjUzIDMxTDI2NCAzNkwyNzIgNDRMMzUwIDE2NkwzNTQgMTc1TDM1NCAxODhMMzUxIDE5NkwzNDAgMjA4TDMyOSAyMTJMMzIwIDIxMkwzMTMgMjEwTDMwNSAyMDVMMzAwIDIwMEwyNzkgMTY2TDI3MSAxNTZMMjU2IDE0OEwyNDEgMTQ3TDIyOCAxNTJMMjE3IDE2MkwxOTMgMjAwTDE4NiAyMDdMMTgxIDIxMEwxNzQgMjEyTDE2MyAyMTJMMTUwIDIwNkwxMzQgMjMwTDEzNCAyMzJMMTQ0IDIzOEwxNjQgMjQzTDE4MSAyNDJMMTkzIDIzOEwyMDQgMjMyTDIxNSAyMjJMMjQyIDE4MEwyNDQgMTc4TDI0OSAxNzhMMjU2IDE4N0wyNzMgMjE1TDI4MCAyMjRMMjg4IDIzMUwzMDIgMjM5TDMxMyAyNDJMMzE5IDI0MkwzMjAgMjQzTDMzNiAyNDJMMzQ0IDI0MEwzNTUgMjM1TDM2OSAyMjRMMzc2IDIxNUwzODEgMjA1TDM4NSAxODlMMzg0IDE2OUwzNzggMTUzTDI5NiAyNUwyODYgMTRMMjc5IDlMMjY5IDRMMjUyIDBMMjM1IDFMMjE4IDdMMjEwIDEyTDE5OCAyNEwxOTMgMzJMMTg2IDIyTDE3MyAxMEwxNjQgNUwxNTEgMUwxNDYgMUwxNDUgMEwxMjcgMUwxMTcgNEwxMDEgMTNMODggMjdMMTMgMTQ0TDUgMTU4Wk0xNTMgMzRMMTY0IDQ0TDE3MyA1OEwxNzQgNjJMODYgMTk5TDc4IDIwN0w3MCAyMTFMNTUgMjEyTDQ3IDIwOUwzNiAxOTlMMzMgMTk0TDMxIDE4N0wzMiAxNzNMMzggMTYyTDExNiA0MUwxMjMgMzVMMTMyIDMxTDE0NSAzMVonLz48L3N2Zz4=");
+      --mereo-symbol-orange-url: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAzODYgMjQ0Jz48cGF0aCBmaWxsPScjRkY1QzM5JyBmaWxsLXJ1bGU9J2V2ZW5vZGQnIGQ9J00xIDE3MkwxIDE4MEwwIDE4MUwxIDE5M0w1IDIwNkwxNCAyMjFMMjcgMjMzTDM0IDIzN0w0NSAyNDFMNTcgMjQyTDU4IDI0M0w3NiAyNDFMOTMgMjM0TDEwMCAyMjlMMTA5IDIyMEwxOTAgOTNMMTkzIDkwTDIxNyAxMjdMMjMzIDEyMUwyNDkgMTIwTDIxMSA2MUwyMjMgNDJMMjI4IDM3TDIzNCAzM0wyNDAgMzFMMjUzIDMxTDI2NCAzNkwyNzIgNDRMMzUwIDE2NkwzNTQgMTc1TDM1NCAxODhMMzUxIDE5NkwzNDAgMjA4TDMyOSAyMTJMMzIwIDIxMkwzMTMgMjEwTDMwNSAyMDVMMzAwIDIwMEwyNzkgMTY2TDI3MSAxNTZMMjU2IDE0OEwyNDEgMTQ3TDIyOCAxNTJMMjE3IDE2MkwxOTMgMjAwTDE4NiAyMDdMMTgxIDIxMEwxNzQgMjEyTDE2MyAyMTJMMTUwIDIwNkwxMzQgMjMwTDEzNCAyMzJMMTQ0IDIzOEwxNjQgMjQzTDE4MSAyNDJMMTkzIDIzOEwyMDQgMjMyTDIxNSAyMjJMMjQyIDE4MEwyNDQgMTc4TDI0OSAxNzhMMjU2IDE4N0wyNzMgMjE1TDI4MCAyMjRMMjg4IDIzMUwzMDIgMjM5TDMxMyAyNDJMMzE5IDI0MkwzMjAgMjQzTDMzNiAyNDJMMzQ0IDI0MEwzNTUgMjM1TDM2OSAyMjRMMzc2IDIxNUwzODEgMjA1TDM4NSAxODlMMzg0IDE2OUwzNzggMTUzTDI5NiAyNUwyODYgMTRMMjc5IDlMMjY5IDRMMjUyIDBMMjM1IDFMMjE4IDdMMjEwIDEyTDE5OCAyNEwxOTMgMzJMMTg2IDIyTDE3MyAxMEwxNjQgNUwxNTEgMUwxNDYgMUwxNDUgMEwxMjcgMUwxMTcgNEwxMDEgMTNMODggMjdMMTMgMTQ0TDUgMTU4Wk0xNTMgMzRMMTY0IDQ0TDE3MyA1OEwxNzQgNjJMODYgMTk5TDc4IDIwN0w3MCAyMTFMNTUgMjEyTDQ3IDIwOUwzNiAxOTlMMzMgMTk0TDMxIDE4N0wzMiAxNzNMMzggMTYyTDExNiA0MUwxMjMgMzVMMTMyIDMxTDE0NSAzMVonLz48L3N2Zz4=");
+      --mereo-orange: #FF5C39;
+      --mereo-orange-2: #FF7D61;
+      --mereo-orange-3: #FF9D88;
+      --mereo-orange-dark: #E65333;
+      --mereo-purple: #6227EA;
+      --mereo-black: #06070A;
+      --mereo-graphite: #2C2F37;
+      --mereo-gray: #656870;
+      --mereo-line: #D2D2D3;
+      --mereo-soft: #E9E9EB;
+      --mereo-off: #FAFAFA;
+      --surface: #ffffff;
+      --ink: var(--mereo-black);
+      --line: #E9E9EB;
+      --sem: #656870;
+      --pesquisas-soft: #FFF0EA;
+      --gc-soft: #F5F5F6;
+      --okr-soft: #F1ECFF;
+      --core-soft: #FFF0EA;
+      --dash-soft: #F4F4F5;
+      --metas-soft: #FFE6DF;
+      --shadow: 0 18px 42px rgba(6, 7, 10, .12);
+      --card-shadow: 0 10px 24px rgba(6, 7, 10, .08);
+      --side: clamp(96px, 9vw, 130px);
+      --col: minmax(0, 1fr);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 6%, rgba(255, 92, 57, .24), transparent 28%),
+        radial-gradient(circle at 86% 0%, rgba(98, 39, 234, .13), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, var(--mereo-off) 52%, #f3f3f4 100%);
+      color: var(--ink);
+      font-family: Graphik, Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .045;
+      background-image: var(--mereo-symbol-orange-url);
+      background-size: 72px 56px;
+    }
+
+    .page-shell {
+      width: min(1520px, calc(100% - 20px));
+      margin: 28px auto 44px;
+      position: relative;
+    }
+
+    .hero {
+      background: var(--mereo-black);
+      color: #fff;
+      border-radius: 30px;
+      padding: clamp(18px, 3vw, 34px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 20px;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: -170px;
+      border-radius: 50%;
+      background: var(--mereo-orange);
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 auto;
+      width: 58%;
+      height: 52%;
+      opacity: .13;
+      background-image: var(--mereo-symbol-white-url);
+      background-size: 68px 54px;
+      z-index: -1;
+    }
+
+    .hero-topline {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 2.3vw, 30px);
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .brand-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(14px, 1.5vw, 22px);
+      color: #fff;
+      font-weight: 850;
+      letter-spacing: -.055em;
+      font-size: clamp(1.85rem, 3.2vw, 3rem);
+      line-height: .9;
+      flex: 0 0 auto;
+    }
+
+    .brand-symbol {
+      width: clamp(58px, 7.2vw, 96px);
+      height: clamp(48px, 5.8vw, 78px);
+      display: inline-block;
+      background-image: var(--mereo-symbol-orange-url);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      flex: 0 0 auto;
+      transform: translateY(1px);
+    }
+
+    .roadmap-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(14px, 1.5vw, 22px);
+      flex: 0 0 auto;
+    }
+
+    .roadmap-bullet {
+      width: clamp(42px, 4.7vw, 64px);
+      height: clamp(42px, 4.7vw, 64px);
+      border-radius: 999px;
+      background: rgba(255, 92, 57, .16);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+    }
+
+    .roadmap-bullet::after {
+      content: "";
+      width: clamp(14px, 1.7vw, 22px);
+      height: clamp(14px, 1.7vw, 22px);
+      border-radius: 999px;
+      background: var(--mereo-orange);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      color: var(--mereo-orange-3);
+      font-weight: 850;
+      font-size: clamp(1.05rem, 2vw, 1.85rem);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin: 0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 880px;
+      color: #fff;
+      font-weight: 850;
+      font-size: clamp(2.15rem, 5.2vw, 5rem);
+      line-height: .92;
+      letter-spacing: -.075em;
+    }
+
+    .hero p {
+      margin: 18px 0 0;
+      max-width: 720px;
+      color: rgba(250, 250, 250, .78);
+      line-height: 1.55;
+      font-size: clamp(.95rem, 1.3vw, 1.08rem);
+    }
+
+    .hero-side {
+      background: rgba(250, 250, 250, .08);
+      border: 1px solid rgba(250, 250, 250, .16);
+      border-radius: 26px;
+      padding: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .chip,
+    .date-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(250, 250, 250, .24);
+      background: rgba(6, 7, 10, .22);
+      color: #fff;
+      font-size: clamp(.66rem, .72vw, .79rem);
+      font-weight: 750;
+      padding: 8px 10px;
+      white-space: nowrap;
+    }
+
+    .date-chip {
+      background: var(--mereo-off);
+      border-color: var(--mereo-line);
+      color: var(--mereo-black);
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      display: inline-block;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, .12);
+    }
+
+    .dot-pesquisas { background: var(--mereo-orange); }
+    .dot-gc { background: #fff; }
+    .dot-okr { background: var(--mereo-purple); }
+    .dot-core { background: var(--mereo-orange); }
+    .dot-dash { background: #D2D2D3; }
+    .dot-metas { background: var(--mereo-orange-dark); }
+
+    .strategy-section {
+      margin: 16px 0;
+      padding: clamp(16px, 2.2vw, 26px);
+      background: rgba(250, 250, 250, .96);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strategy-section::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -120px;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(255, 92, 57, .10);
+      pointer-events: none;
+    }
+
+    .strategy-header {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+      gap: clamp(18px, 3vw, 34px);
+      align-items: stretch;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--mereo-orange);
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--mereo-orange);
+      box-shadow: 0 0 0 5px rgba(255, 92, 57, .12);
+    }
+
+    .strategy-copy h2 {
+      margin: 0;
+      max-width: 960px;
+      color: var(--mereo-black);
+      font-size: clamp(1.75rem, 3.2vw, 3.35rem);
+      line-height: .96;
+      letter-spacing: -.06em;
+      font-weight: 850;
+    }
+
+    .strategy-copy p {
+      margin: 15px 0 0;
+      color: var(--mereo-gray);
+      font-size: 1rem;
+      line-height: 1.62;
+      max-width: 880px;
+    }
+
+    .strategy-note {
+      background: var(--mereo-black);
+      color: #fff;
+      border-radius: 24px;
+      padding: clamp(22px, 2.6vw, 34px);
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: clamp(54px, 7vw, 104px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .strategy-note::after {
+      content: "";
+      position: absolute;
+      right: -38px;
+      bottom: -34px;
+      width: 190px;
+      height: 158px;
+      opacity: .10;
+      background-image: var(--mereo-symbol-white-url);
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    .strategy-note strong {
+      color: var(--mereo-orange-3);
+      font-size: .82rem;
+      line-height: 1;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      font-weight: 850;
+      position: relative;
+      z-index: 1;
+    }
+
+    .strategy-note p {
+      margin: 0;
+      max-width: 92%;
+      color: rgba(250, 250, 250, .86);
+      font-size: clamp(1rem, 1.4vw, 1.35rem);
+      line-height: 1.42;
+      font-weight: 750;
+      letter-spacing: -.02em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .strategy-metrics,
+    .strategy-pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .strategy-metrics { margin-bottom: 14px; }
+
+    .metric-card,
+    .pillar-card {
+      background: #fff;
+      border: 1px solid var(--mereo-line);
+      border-radius: 22px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .metric-card {
+      padding: 12px;
+      min-height: 82px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-card strong {
+      color: var(--mereo-orange);
+      font-size: clamp(1.65rem, 3vw, 2.55rem);
+      line-height: 1;
+      letter-spacing: -.055em;
+      font-weight: 850;
+    }
+
+    .metric-card span {
+      color: var(--mereo-graphite);
+      font-weight: 750;
+      line-height: 1.25;
+      font-size: .86rem;
+    }
+
+    .pillar-card {
+      padding: 12px;
+      min-height: 128px;
+    }
+
+    .pillar-card span {
+      display: inline-flex;
+      color: var(--mereo-orange);
+      font-weight: 850;
+      margin-bottom: 14px;
+      letter-spacing: -.02em;
+    }
+
+    .pillar-card h3 {
+      margin: 0;
+      color: var(--mereo-black);
+      font-size: 1rem;
+      font-weight: 850;
+      letter-spacing: -.025em;
+      line-height: 1.05;
+    }
+
+    .pillar-card p {
+      margin: 9px 0 0;
+      color: var(--mereo-gray);
+      font-size: .86rem;
+      line-height: 1.48;
+    }
+
+    .roadmap-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .roadmap-scroll {
+      overflow-x: visible;
+      scrollbar-width: none;
+    }
+
+    .roadmap-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .roadmap-grid {
+      width: 100%;
+      min-width: 0;
+      display: grid;
+      grid-template-columns: var(--side) repeat(6, minmax(0, 1fr));
+      position: relative;
+      background: #fff;
+    }
+
+    .corner,
+    .quarter-head,
+    .area-head,
+    .quarter-cell {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .corner {
+      position: sticky;
+      left: 0;
+      z-index: 6;
+      background: var(--mereo-off);
+      padding: 10px;
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: clamp(.58rem, .7vw, .72rem);
+      color: var(--mereo-gray);
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .quarter-head {
+      min-height: 74px;
+      padding: 12px 10px;
+      background: var(--mereo-black);
+      color: #fff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .quarter-head::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 0;
+      width: 14px;
+      height: 24px;
+      background: var(--mereo-orange);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 8px 16px rgba(255, 92, 57, .34);
+    }
+
+    .quarter-head .label {
+      margin-left: 20px;
+      font-size: clamp(.62rem, .82vw, .86rem);
+      font-weight: 850;
+      letter-spacing: -.02em;
+    }
+
+    .quarter-head .sub {
+      margin-left: 20px;
+      color: rgba(250,250,250,.70);
+      font-size: clamp(.52rem, .68vw, .68rem);
+      font-weight: 650;
+    }
+
+    .area-head {
+      min-height: 124px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-weight: 850;
+      font-size: clamp(.58rem, .76vw, .82rem);
+      text-transform: uppercase;
+      letter-spacing: .035em;
+      line-height: 1.12;
+      overflow: hidden;
+    }
+
+    .area-head::after {
+      content: "";
+      position: absolute;
+      inset: auto -28px -36px auto;
+      width: 94px;
+      height: 94px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+    }
+
+    .area-core::after {
+      background: rgba(255, 92, 57, .10);
+    }
+
+    .area-pesquisas { background: var(--mereo-orange); color: var(--mereo-black); }
+    .area-gc { background: var(--mereo-black); color: #fff; }
+    .area-okr { background: var(--mereo-purple); color: #fff; }
+    .area-core {
+      background: #fff;
+      color: var(--mereo-black);
+      font-size: clamp(.68rem, .9vw, .95rem);
+      font-weight: 850;
+      letter-spacing: .08em;
+      border-left: 4px solid var(--mereo-orange);
+    }
+    .area-metas { background: var(--mereo-orange-dark); color: var(--mereo-black); }
+    .area-dash { background: var(--mereo-graphite); color: #fff; }
+
+    .quarter-cell {
+      min-height: 124px;
+      padding: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      background: #fff;
+    }
+
+    .soft-pesquisas { background: var(--pesquisas-soft); }
+    .soft-gc { background: var(--gc-soft); }
+    .soft-okr { background: var(--okr-soft); }
+    .soft-core { background: var(--core-soft); }
+    .soft-metas { background: var(--metas-soft); }
+    .soft-dash { background: var(--dash-soft); }
+
+    .quarter-cell.is-span {
+      justify-content: center;
+    }
+
+    .feature {
+      --accent: var(--sem);
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(210, 210, 211, .96);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(6, 7, 10, .06);
+      padding: 6px 7px;
+      min-height: 54px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .feature.is-range {
+      min-height: 112px;
+      justify-content: center;
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(6, 7, 10, .14);
+      border-color: rgba(255, 92, 57, .52);
+    }
+
+    .feature-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .id {
+      color: var(--mereo-black);
+      font-weight: 850;
+      font-size: clamp(.56rem, .68vw, .68rem);
+      letter-spacing: .01em;
+      line-height: 1;
+    }
+
+    .title {
+      color: var(--mereo-graphite);
+      font-size: clamp(.56rem, .68vw, .72rem);
+      font-weight: 650;
+      line-height: 1.22;
+      overflow-wrap: anywhere;
+      hyphens: auto;
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .feature-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border: 1px solid rgba(98, 39, 234, .18);
+      background: rgba(98, 39, 234, .07);
+      color: var(--mereo-purple);
+      border-radius: 999px;
+      padding: 3px 6px;
+      font-size: clamp(.48rem, .58vw, .58rem);
+      font-weight: 850;
+      letter-spacing: .05em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .sem-data { --accent: var(--mereo-gray); }
+    .t2 { --accent: var(--mereo-orange); }
+    .t3 { --accent: var(--mereo-purple); }
+    .t4 { --accent: var(--mereo-black); }
+    .t127 { --accent: var(--mereo-orange-dark); }
+    .t227 { --accent: var(--mereo-graphite); }
+
+    .mobile-list { display: none; }
+
+    .mobile-area {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #fff;
+      margin-bottom: 16px;
+    }
+
+    .mobile-area-head {
+      padding: 15px 16px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .mobile-area-head .count {
+      font-size: .72rem;
+      background: rgba(255,255,255,.24);
+      border: 1px solid rgba(255,255,255,.34);
+      padding: 5px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .area-pesquisas .count,
+    .area-core .count,
+    .area-metas .count {
+      background: rgba(6, 7, 10, .10);
+      border-color: rgba(6, 7, 10, .16);
+      color: var(--mereo-black);
+    }
+
+    .mobile-group {
+      padding: 14px;
+      border-top: 1px solid var(--line);
+    }
+
+    .mobile-group-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: var(--mereo-black);
+      font-size: .88rem;
+      font-weight: 850;
+    }
+
+    .mobile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 10px;
+    }
+
+    .hint-scroll {
+      display: none;
+    }
+
+    @media (max-width: 992px) {
+      .page-shell { width: min(100% - 20px, 760px); margin-top: 14px; }
+      .strategy-header { grid-template-columns: 1fr; }
+      .strategy-metrics,
+      .strategy-pillars { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero { grid-template-columns: 1fr; border-radius: 24px; }
+      .hero-side { width: 100%; }
+      .legend { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+      .hint-scroll { display: none; }
+      .roadmap-card { display: none; }
+      .mobile-list { display: block; }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell { width: min(100% - 14px, 760px); }
+      .strategy-section { border-radius: 22px; padding: 18px; }
+      .strategy-metrics,
+      .strategy-pillars { grid-template-columns: 1fr; }
+      .hero { padding: 20px; }
+      h1 { font-size: clamp(2rem, 12vw, 3.25rem); }
+      .eyebrow { white-space: normal; }
+      .chip { font-size: .72rem; padding: 8px 9px; }
+      .mobile-grid { grid-template-columns: 1fr; }
+      .feature { min-height: auto; }
+      .mobile-area-head { padding: 12px 14px; }
+    }
+
+    @media print {
+      @page { size: A4 landscape; margin: 8mm; }
+      body { background: #fff; }
+      body::before { display: none; }
+      .page-shell { width: 100%; margin: 0; }
+      .hero { box-shadow: none; border-radius: 0; margin-bottom: 10px; }
+      .roadmap-card { display: block; box-shadow: none; border-radius: 0; }
+      .roadmap-scroll { overflow: visible; }
+      .roadmap-grid { min-width: 0; grid-template-columns: 96px repeat(6, minmax(0, 1fr)); }
+      .mobile-list { display: none; }
+      .feature { box-shadow: none; break-inside: avoid; }
+      .quarter-cell { padding: 7px; }
+      .title { font-size: .64rem; }
+      .id { font-size: .6rem; }
+      .quarter-head .label { font-size: .72rem; }
+      .area-head { font-size: .7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <div>
+        <div class="hero-topline">
+          <div class="brand-lockup" aria-label="Mereo">
+            <span class="brand-symbol" aria-hidden="true"></span>
+            <span>mereo</span>
+          </div>
+          <div class="roadmap-lockup" aria-label="Roadmap de features">
+            <span class="roadmap-bullet" aria-hidden="true"></span>
+            <span class="eyebrow">Roadmap de features</span>
+          </div>
+        </div>
+        <h1>Planejamento por prioridade e trimestre.</h1>
+      </div>
+      <aside class="hero-side" aria-label="Legenda de áreas">
+        <div class="legend">
+          <span class="chip"><span class="dot dot-okr"></span>OKR-Lab</span>
+          <span class="chip"><span class="dot dot-core"></span>Core</span>
+          <span class="chip"><span class="dot dot-pesquisas"></span>Pesquisas</span>
+          <span class="chip"><span class="dot dot-gc"></span>GC e Sucessão</span>
+          <span class="chip"><span class="dot dot-metas"></span>Metas e RV</span>
+          <span class="chip"><span class="dot dot-dash"></span>Dashboards</span>
+        </div>
+      </aside>
+    </header>
+
+    <section class="strategy-section" aria-label="Visão estratégica do roadmap">
+      <div class="strategy-header">
+        <div class="strategy-copy">
+          <span class="section-kicker">Visão estratégica</span>
+          <h2>Um roadmap orientado à experiência, escala e inteligência da plataforma.</h2>
+          <p>
+            Este roadmap consolida as principais evoluções previstas para fortalecer a plataforma Mereo nos próximos ciclos, conectando entregas de produto a prioridades de negócio: ampliar a experiência dos usuários fortalecendo o conceito de jornadas, sustentar a escalabilidade dos módulos core e aumentar a capacidade analítica para clientes, lideranças e áreas de RH. Alem de embarcar a I.A no produto para suportar analises preditivas, trazendo soluções com base no contexto de cada cliente.
+          </p>
+        </div>
+
+        <aside class="strategy-note" aria-label="Intenção estratégica">
+          <strong>Intenção estratégica</strong>
+          <p>
+            A estratégia combina evolução da jornada, eficiência operacional e decisões orientadas por dados para impulsionar
+            pessoas e elevar a performance das organizações.
+          </p>
+        </aside>
+      </div>
+
+      <div class="strategy-metrics" aria-label="Indicadores executivos do roadmap">
+        <div class="metric-card">
+          <strong>35</strong>
+          <span>iniciativas mapeadas</span>
+        </div>
+        <div class="metric-card">
+          <strong>5</strong>
+          <span>frentes de produto</span>
+        </div>
+        <div class="metric-card">
+          <strong>2026–2027</strong>
+          <span>horizonte de planejamento</span>
+        </div>
+        <div class="metric-card">
+          <strong>Inovação</strong>
+          <span>como eixo de evolução</span>
+        </div>
+      </div>
+
+      <div class="strategy-pillars" aria-label="Pilares estratégicos">
+        <article class="pillar-card">
+          <span>01</span>
+          <h3>Experiência e jornada</h3>
+          <p>Personalização de pesquisas, jornadas IMEX e evolução da escuta em momentos críticos.</p>
+        </article>
+        <article class="pillar-card">
+          <span>02</span>
+          <h3>Performance e desenvolvimento</h3>
+          <p>Melhorias em avaliações, feedback, PDI, competências, sucessão e painel de performance.</p>
+        </article>
+        <article class="pillar-card">
+          <span>03</span>
+          <h3>Eficiência operacional</h3>
+          <p>Automação, integração, auditoria e sustentação técnica para reduzir esforço manual e aumentar escala.</p>
+        </article>
+        <article class="pillar-card">
+          <span>04</span>
+          <h3>Inteligência e decisão</h3>
+          <p>Dashboards, relatórios e indicadores para apoiar decisões mais rápidas e orientadas por dados.</p>
+        </article>
+        <article class="pillar-card">
+          <span>05</span>
+          <h3>Inovação</h3>
+          <p>Uso de I.A e Labs de inovação para antecipar necessidades, acelerar aprendizados e entregar soluções mais inteligentes e aderentes ao contexto de cada cliente.</p>
+        </article>
+      </div>
+    </section>
+
+    <p class="hint-scroll">No desktop, a tabela pode ser arrastada lateralmente quando não couber na tela.</p>
+
+    <section class="roadmap-card" aria-label="Tabela de roadmap">
+      <div class="roadmap-scroll">
+        <div class="roadmap-grid" id="roadmapGrid"></div>
+      </div>
+    </section>
+
+    <section class="mobile-list" id="mobileList" aria-label="Cards responsivos de roadmap"></section>
+  </main>
+
+  <script>
+    const periods = [
+      { key: "Sem data", label: "Sem data", sub: "Backlog inicial", cls: "sem-data" },
+      { key: "T2/2026", label: "T2/2026", sub: "Prioridade alta", cls: "t2" },
+      { key: "T3/2026", label: "T3/2026", sub: "Próxima onda", cls: "t3" },
+      { key: "T4/2026", label: "T4/2026", sub: "Fechamento do ano", cls: "t4" },
+      { key: "T1/2027", label: "T1/2027", sub: "Continuidade", cls: "t127" },
+      { key: "T2/2027", label: "T2/2027", sub: "Evoluções futuras", cls: "t227" }
+    ];
+
+    const areas = [
+      {
+        name: "OKR-Lab",
+        key: "okr",
+        countLabel: "1 item",
+        items: [
+          { id: "75491", title: "Refatoração do módulo OKR", date: "T3/2026", tags: ["Inovação"] }
+        ]
+      },
+      {
+        name: "Core",
+        key: "core",
+        countLabel: "1 item",
+        items: [
+          { id: "77527", title: "Reestruturação do Core [Jornadas]", date: "T2/2026", tags: ["Inovação"] }
+        ]
+      },
+      {
+        name: "Pesquisas",
+        key: "pesquisas",
+        countLabel: "8 itens",
+        items: [
+          { id: "68661", title: "IMEX 1 - Criação da jornada de colaboradores e pesquisas personalizadas", date: "T2/2026" },
+          { id: "72447", title: "IMEX 2 - Seleção de participantes de forma automática em pesquisas", date: "T3/2026" },
+          { id: "72449", title: "IMEX 4 - Inclusão de metodologia Mereo Onboarding", date: "T3/2026" },
+          { id: "72450", title: "IMEX 5 - Inclusão de metodologia Mereo Experiência", date: "T4/2026" },
+          { id: "72451", title: "IMEX 7 - Criação de link direto por pesquisa (Imex + Pesquisas personalizadas)", date: "T4/2026" },
+          { id: "72453", title: "IMEX 3 - Inclusão de pesquisas nominais (IMEX + Pesquisas personalizadas)", date: "T3/2026" },
+          { id: "73147", title: "IMEX 8 - Inclusão de nova subopção no menu esquerdo – Chat RH/Jornada de experiência", date: "T1/2027" },
+          { id: "73189", title: "IMEX 6 - Inclusão de metodologia Mereo Demissão nas opções da jornada de experiência", date: "T4/2026" }
+        ]
+      },
+      {
+        name: "GC e Sucessão",
+        key: "gc",
+        countLabel: "10 itens",
+        items: [
+          { id: "69824", title: "Assistente de IA na etapa de Feedback e Atender demanda de lead estratégico", date: "T2/2026" },
+          { id: "70269", title: "Poder utilizar outros tipos de seletores nas avaliações", date: "T4/2026" },
+          { id: "70503", title: "Permitir o envio da etapa de avaliação direto para resultado em ciclos que não possuem feedback", date: "T2/2026" },
+          { id: "70529", title: "Permitir desabilitar as notificações de pendências de PDI", date: "T3/2026" },
+          { id: "70548", title: "Incluir opção \"Não recebi\" nas opções da qualidade do feedback", date: "T4/2026" },
+          { id: "70553", title: "Permitir criar ações de PDI de colaboradores sem ciclo", date: "T3/2026" },
+          { id: "70559", title: "Criar log de auditoria do módulo de Competências", date: "T1/2027" },
+          { id: "70614", title: "Dashboard para análise de resultados - visão admin e gestor", date: "T2/2027" },
+          { id: "71543", title: "[Minerva] Liberação Automática de Avaliações Pós-Autoavaliação", date: "T2/2026" },
+          { id: "74683", title: "Pré-Visualização do Formulário de Avaliação", date: "T4/2026" }
+        ]
+      },
+      {
+        name: "Metas e RV",
+        key: "metas",
+        countLabel: "13 itens",
+        items: [
+          { id: "74879", title: "Migrar as chamadas \"fast goals\" para o service do projeto MBO no módulo Metas", date: "T3/2026" },
+          { id: "74873", title: "Migrar as chamadas \"fast goals\" para o service do projeto MBO no módulo Gestão de Competências", date: "T3/2026" },
+          { id: "75040", title: "Migrar as chamadas \"fast goals\" para o service do projeto MBO no módulo Remuneração variável", date: "T4/2026" },
+          { id: "74875", title: "Migrar as chamadas \"fast goals\" para o service do projeto MBO no módulo Sucessão", date: "T4/2026" },
+          { id: "74877", title: "Migrar as chamadas \"fast goals\" para o service do projeto MBO no módulo Estratégia", date: "T4/2026" },
+          { id: "70523", title: "Permitir o compartilhamento de todos os tipos de metas", date: "T1/2027" },
+          { id: "70577", title: "Permitir o compartilhamento de todas as metas de um painel", date: "T1/2027" },
+          { id: "70602", title: "[Scala]Assinatura manual do gestor no termo de aceite", date: "T3/2026" },
+          { id: "73177", title: "Gestão de Afastamentos Integrada ao Histórico de Cargos", date: "T2/2026" },
+          { id: "74630", title: "[Minerva] Carga de dados e integração para cadastro de filiais", date: "T2/2026" },
+          { id: "73435", title: "Trazer auditoria anual para o painel de perfomance", date: "T3/2026" },
+          { id: "48834", title: "Nova tela de pendência de metas", date: "T1/2027" },
+          { id: "71485", title: "Permitir a visualização de mais de um painel simultaneamente no Painel de Performance", date: "T2/2027" }
+        ]
+      },
+      {
+        name: "Dashboards e Relatórios",
+        key: "dash",
+        countLabel: "2 itens",
+        items: [
+          { id: "70373", title: "Desenvolvimento de Dashboard OnePage centralizando as informações do colaborador em um único dash", date: "Sem data" },
+          { id: "69642", title: "Possibilidade de criar dashboards para diferentes usuários, como líderes, adms, próprio usuário", date: "Sem data" }
+        ]
+      }
+    ];
+
+    const periodMeta = Object.fromEntries(periods.map((period) => [period.key, period]));
+
+    function card(item) {
+      const cls = periodMeta[item.date]?.cls || "sem-data";
+      const isRange = item.endDate ? " is-range" : "";
+      const rangeTag = item.endDate ? [`${item.date} – ${item.endDate}`] : [];
+      const allTags = [...(item.tags || []), ...rangeTag];
+      const tags = allTags.length
+        ? `<div class="feature-tags">${allTags.map((tag) => `<span class="feature-tag">${tag}</span>`).join("")}</div>`
+        : "";
+
+      return `
+        <article class="feature ${cls}${isRange}">
+          <div class="feature-top">
+            <span class="id">${item.id}</span>
+          </div>
+          <div class="title">${item.title}</div>
+          ${tags}
+        </article>`;
+    }
+
+    function getPeriodIndex(periodKey) {
+      return periods.findIndex((period) => period.key === periodKey);
+    }
+
+    function getItemSpan(item) {
+      if (!item.endDate) return 1;
+      const startIndex = getPeriodIndex(item.date);
+      const endIndex = getPeriodIndex(item.endDate);
+      if (startIndex < 0 || endIndex < startIndex) return 1;
+      return endIndex - startIndex + 1;
+    }
+
+    function renderDesktop() {
+      const grid = document.getElementById("roadmapGrid");
+      grid.innerHTML = `
+        <div class="corner">Área / período</div>
+        ${periods.map((period) => `
+          <div class="quarter-head">
+            <span class="label">${period.label}</span>
+            <span class="sub">${period.sub}</span>
+          </div>
+        `).join("")}
+      `;
+
+      areas.forEach((area) => {
+        grid.insertAdjacentHTML("beforeend", `<div class="area-head area-${area.key}">${area.name}</div>`);
+
+        for (let index = 0; index < periods.length; index += 1) {
+          const period = periods[index];
+          const periodItems = area.items.filter((item) => item.date === period.key);
+          const maxSpan = Math.max(1, ...periodItems.map(getItemSpan));
+          const spanClass = maxSpan > 1 ? " is-span" : "";
+          const spanStyle = maxSpan > 1 ? ` style="grid-column: span ${maxSpan};"` : "";
+
+          grid.insertAdjacentHTML(
+            "beforeend",
+            `<div class="quarter-cell soft-${area.key}${spanClass}"${spanStyle}>${periodItems.map((item) => card(item)).join("")}</div>`
+          );
+
+          index += maxSpan - 1;
+        }
+      });
+    }
+
+    function renderMobile() {
+      const mobile = document.getElementById("mobileList");
+      mobile.innerHTML = areas.map((area) => {
+        const groups = periods.map((period) => {
+          const items = area.items.filter((item) => item.date === period.key);
+          if (!items.length) return "";
+          return `
+            <div class="mobile-group soft-${area.key}">
+              <div class="mobile-group-title">
+                ${items.some((item) => item.endDate) ? `${period.label} – ${items.find((item) => item.endDate)?.endDate}` : period.label}
+                ${period.key === "Sem data" ? '<span class="date-chip">Backlog</span>' : ""}
+              </div>
+              <div class="mobile-grid">
+                ${items.map((item) => card(item)).join("")}
+              </div>
+            </div>`;
+        }).join("");
+
+        return `
+          <div class="mobile-area">
+            <div class="mobile-area-head area-${area.key}">
+              ${area.name}
+              <span class="count">${area.countLabel}</span>
+            </div>
+            ${groups}
+          </div>`;
+      }).join("");
+    }
+
+    function runSelfTests() {
+      console.assert(Array.isArray(areas), "areas deve ser um array");
+      console.assert(areas.find((area) => area.key === "metas").items.length === 13, "Metas e RV deve ter 13 itens");
+      console.assert(areas[0].key === "okr", "OKR-Lab deve ser a primeira área");
+      console.assert(areas[1].key === "core", "Core deve ser a segunda área");
+      console.assert(areas.find((area) => area.key === "core").items[0].id === "77527", "Core deve conter a oportunidade 77527");
+      console.assert(areas.find((area) => area.key === "core").items[0].date === "T2/2026", "Core deve iniciar em T2/2026");
+      console.assert(areas.find((area) => area.key === "core").items[0].tags.includes("Inovação"), "Core deve ter a tag Inovação");
+      console.assert(areas[areas.length - 1].key === "dash", "Dashboards e Relatórios deve ser a última área");
+      console.assert(areas.find((area) => area.key === "dash").items.length === 2, "Dashboards e Relatórios deve ter 2 itens");
+      console.assert(areas.find((area) => area.key === "dash").items[0].id === "70373", "O primeiro item de Dashboards deve ser 70373");
+      console.assert(areas.find((area) => area.key === "okr").items[0].tags.includes("Inovação"), "OKR deve ter a tag Inovação");
+      console.assert(!document.documentElement.innerHTML.includes("$1"), "O código não deve conter placeholder $1");
+    }
+
+    renderDesktop();
+    renderMobile();
+    runSelfTests();
+  </script>
+</body>
+</html>
